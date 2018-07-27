@@ -1,4 +1,11 @@
-﻿<# Derek's PowerShell Profile #>
+﻿<# 
+  Derek's PowerShell Profile
+
+  Replace whatever is in the $Profile file with this file.
+
+  PS> $d3r3kkProfile = "C:\Path\To\This\File\Powershell.Profile.ps1"
+  PS> Copy-Item $d3r3kkProfile $Profile -Force
+#/>
 
 # Colours and title bar info:
 $TitleBar='d3r3kk @ Github'
