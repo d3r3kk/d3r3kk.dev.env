@@ -26,8 +26,11 @@ $ClearAfterInit=$true
 
 # Pretty much can leave this next bit alone...
 
-
-Set-Location $DevRoot
+# Don't change the current path if we're already under it.
+if (-not $PWD.Path.StartsWith($DevRoot))
+{
+  Set-Location $DevRoot
+}
 
 if ([String]::IsNullOrEmpty($UserProfile))
 {
