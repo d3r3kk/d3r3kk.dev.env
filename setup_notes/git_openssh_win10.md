@@ -11,7 +11,7 @@ Once you've added the feature (and if necessary, rebooted your machine), enable 
 
 There is a bug where the installed OpenSSH service doesn't configure ssh-agent correctly. One workaround to this issue was found on [the OpenSSH github site here](https://github.com/Microsoft/OpenSSH/find-this-issue-and-add-link-derek). Basically, open a Powershell window as Administrator and issue this command:
 
-'''ps
+'''
 sc.exe create sshd binPath=C:\Windows\System32\OpenSSH\ssh.exe
 '''
 
@@ -23,14 +23,14 @@ Set up your user name and email - this is something easy to forget but will conf
 
 Open a powershell window and type the following:
 
-```ps
+```
 git config --global --add user.name "My Name"
 git config --global --add user.email "my_email@my_email_service.com"
 ```
 
 Configure git to run with the installed version of OpenSSH (it does try to use the version of ssh.exe it ships with for some reason). Do this by setting your global git config once more:
 
-```ps
+```
 git config --global --add core.sshCommand "'C:\\Windows\\System32\\OpenSSH\\ssh.exe'"
 ```
 
@@ -38,7 +38,7 @@ git config --global --add core.sshCommand "'C:\\Windows\\System32\\OpenSSH\\ssh.
 
 Now it's time to set up your own SSH keys. To do this, open a Powershell window and issue the following command, and enter :
 
-```ps
+```
 ssh-keygen -t rsa -b 2048 -C [enter_a_note_about_this_cert_such_as("$Env:COMPUTERNAME cert for work")]
 Generating public/private rsa key pair.
 Enter file in which to save the key (C:\Users\user/.ssh/id_rsa): [press_enter]
@@ -68,7 +68,7 @@ Log into your github/AzDO account and visit the Settings->Security->SSH Keys sec
 
 Last step here is to add the new ssh key to your ssh-agent, so that you won't have to type the passphrase in all the time. Open a Powershell window and issue this command:
 
-```ps
+```
 ssh-add
 Enter passphrase for C:\Users\user\.ssh\id_rsa: [your_super_secret_passphrase]
 Identity added: C:\Users\user\.ssh\id_rsa (C:\Users\user\.ssh\id_rsa)
